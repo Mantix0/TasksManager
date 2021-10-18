@@ -1,7 +1,7 @@
 from .models import Task
 from .models import City
 from django.forms import ModelForm, TextInput, Textarea
-from datetime import datetime
+
 
 
 class TaskForm(ModelForm):

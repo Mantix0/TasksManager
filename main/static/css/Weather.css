@@ -1,0 +1,23 @@
+
+.container1 {
+    width:500px;
+    position: fixed;
+}
+
+.left-element {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+}
+
+.right-element {
+    font-size: 20px;
+    margin-top: 10px;
+    width: auto;
+    display: inline-block;
+    position: absolute;
+    left: 100px;
+    -webkit-user-select: none;
+
+
+}

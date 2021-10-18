@@ -6,33 +6,41 @@
 
 
 {% block content %}
+    <link rel="stylesheet" href="{% static 'css/Weather.css' %}">
     <div class="row">
-        <div class = "col-5 offset-1">
-            <h1>Узнать погоду в городе</h1>
-            <form action="" method="post">
+        <div class="col-5 offset-1">
+            <h1 style="margin-bottom: 25px">Узнать погоду в городе</h1>
+            <form  method="post">
                 {% csrf_token %}
-                <label for ="city">Город</label>
                 {{ form.name }}
-                <input type="submit" name = "send" value="Узнать"  class="mt-2 btn btn-warning">
+                <div class="container1">
+                    <div class="left-element">
+                <input type="submit" name="send" value="Узнать" class="mt-2 btn btn-success">
+                    </div>
+                <div class="right-element ">
+                    <p class = 'text-warning'>{{ error }}</p>
+                    </div>
+                </div>
             </form>
 
         </div>
-        <div class = "col-4 offset-2">
+        <div class="col-4 offset-2">
             <h1>Информация</h1>
             {% for info in all_info %}
-            <div class="alert alert-info">
-                <div class ="row">
-                    <div class="col-6">
-                    <b>Город:</b> {{ info.city }}<br>
-                    <b>Температура:</b> {{ info.temp }}<sup>o</sup><br>
-                    </div>
+                <div class="alert alert-info">
+                    <div class="row">
+                        <div class="col-6">
+                            <b>Город:</b> {{ info.city }}<br>
+                            <b>Температура:</b> {{ info.temp }}<sup>o</sup><br>
+                        </div>
 
-                    <div class="col-2 offset-1 ">
-                    <img src="http://openweathermap.org/img/w/{{ info.icon }}.png" alt="Фото" class="img-thumbnail">
-                  </div>
-                                        <a href="{% url 'w_delete' info.id %}"  class=" col-1 offset-2 btn ">×</a>
+                        <div class="col-2 offset-1 ">
+                            <img src="http://openweathermap.org/img/w/{{ info.icon }}.png" alt="Фото"
+                                 class="img-thumbnail">
+                        </div>
+                        <a href="{% url 'w_delete' info.id %}" class=" col-1 offset-2 btn ">×</a>
+                    </div>
                 </div>
-            </div>
             {% endfor %}
         </div>
     </div>
